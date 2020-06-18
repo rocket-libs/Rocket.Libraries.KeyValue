@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Rocket.Apps.KeyValue": {
+    "Rocket.Services.KeyValue": {
       "commandName": "Project",
       "launchUrl": "api/values",
       "environmentVariables": {

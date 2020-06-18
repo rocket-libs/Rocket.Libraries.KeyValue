@@ -1,4 +1,4 @@
-﻿namespace Rocket.Apps.KeyValue.Models
+﻿namespace Rocket.Services.KeyValue.Models
 {
     public class KeyValueContainer
     {

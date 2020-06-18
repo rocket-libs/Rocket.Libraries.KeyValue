@@ -1,16 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Rocket.Apps.KeyValue.Models;
-using Rocket.Apps.KeyValue.Services;
-using Rocket.Libraries.ServiceProviders.Services;
+using Rocket.Services.KeyValue.Models;
 using System;
+using Rocket.Services.KeyValue.Shared.Routing;
 
-namespace Rocket.Apps.KeyValue.Controllers
+namespace Rocket.Services.KeyValue.Features.Repository
 {
     public class RepositoryController : RocketController
     {
-        public RepositoryController(IRocketServiceProvider rocketServiceProvider)
-            : base(rocketServiceProvider)
+        private readonly IRepositoryWriter repositoryWriter;
+        private readonly IRepositoryReader repositoryReader;
+
+        public RepositoryController(
+            IRepositoryWriter repositoryWriter,
+            IRepositoryReader repositoryReader)
         {
+            this.repositoryWriter = repositoryWriter;
+            this.repositoryReader = repositoryReader;
         }
 
         [Route("insert")]
@@ -19,8 +24,7 @@ namespace Rocket.Apps.KeyValue.Controllers
         {
             try
             {
-                var repository = RocketServiceProvider.GetService<Repository>();
-                return GetSuccessResponse(repository.Insert(container));
+                return GetSuccessResponse(repositoryWriter.Insert(container));
             }
             catch (Exception e)
             {
@@ -34,8 +38,7 @@ namespace Rocket.Apps.KeyValue.Controllers
         {
             try
             {
-                var repository = RocketServiceProvider.GetService<Repository>();
-                return GetSuccessResponse(repository.Get(key));
+                return GetSuccessResponse(repositoryReader.Get(key));
             }
             catch (Exception e)
             {
@@ -49,8 +52,7 @@ namespace Rocket.Apps.KeyValue.Controllers
         {
             try
             {
-                var repository = RocketServiceProvider.GetService<Repository>();
-                return GetSuccessResponse(repository.Delete(key));
+                return GetSuccessResponse(repositoryWriter.Delete(key));
             }
             catch (Exception e)
             {

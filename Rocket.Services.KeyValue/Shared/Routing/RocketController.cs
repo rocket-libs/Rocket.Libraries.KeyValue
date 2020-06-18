@@ -1,19 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Rocket.Apps.KeyValue.Exceptions;
-using Rocket.Apps.KeyValue.Models;
-using Rocket.Libraries.ServiceProviders.Services;
+using Rocket.Services.KeyValue.Exceptions;
+using Rocket.Services.KeyValue.Models;
 using System;
 
-namespace Rocket.Apps.KeyValue.Controllers
+namespace Rocket.Services.KeyValue.Shared.Routing
 {
     [Route("api/v1/[controller]")]
     public abstract class RocketController : ControllerBase
     {
-        protected IRocketServiceProvider RocketServiceProvider { get; }
+        
 
-        public RocketController(IRocketServiceProvider rocketServiceProvider)
+        public RocketController()
         {
-            RocketServiceProvider = rocketServiceProvider;
+            
         }
 
         protected ResponseObject<TResponse> GetSuccessResponse<TResponse>(TResponse response)

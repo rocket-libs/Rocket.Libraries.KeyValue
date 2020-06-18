@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Rocket.Apps.KeyValue.Exceptions
+namespace Rocket.Services.KeyValue.Exceptions
 {
     public class UnknownKeyException : Exception
     {

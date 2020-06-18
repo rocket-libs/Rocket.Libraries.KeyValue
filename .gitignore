@@ -1,2 +1,3 @@
-Rocket.Apps.KeyValue/obj/
-Rocket.Apps.KeyValue/persistant-values/
+Rocket.Services.KeyValue/obj/
+Rocket.Services.KeyValue/persistant-values/
+Rocket.Services.KeyValue/bin/
